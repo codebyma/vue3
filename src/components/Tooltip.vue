@@ -1,0 +1,180 @@
+<template>
+    <div class="tooltip-wrapper" ref="wrapperRef">
+        <!-- 트리거 버튼 -->
+        <button
+            ref="triggerRef"
+            class="tooltip-trigger"
+            @click="toggleTooltip"
+            :aria-expanded="isVisible.toString()"
+            :aria-controls="tooltipId"
+            type="button"
+			aria-label="툴팁 열기"
+        >
+            <slot></slot>
+        </button>
+
+        <!-- 툴팁 본문 -->
+        <transition name="fade">
+            <div
+                v-if="isVisible"
+                :id="tooltipId"
+                class="tooltip-content"
+                :class="position"
+                role="tooltip"
+                ref="tooltipRef"
+            >
+                <button
+                    class="tooltip-close"
+                    @click="closeTooltip"
+                    type="button"
+                    aria-label="툴팁 닫기"
+                >
+                    ✕
+                </button>
+
+                <div class="tooltip-inner">
+                    <slot name="content"></slot>
+                </div>
+            </div>
+        </transition>
+    </div>
+</template>
+
+<script setup>
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+
+const props = defineProps({
+    position: {
+        type: String,
+        default: 'top', // top, right, bottom, left
+    },
+})
+
+const isVisible = ref(false)
+const tooltipId = `tooltip-${Math.random().toString(36).slice(2, 9)}`
+const wrapperRef = ref(null)
+const triggerRef = ref(null)
+const tooltipRef = ref(null)
+
+function toggleTooltip() {
+    isVisible.value = !isVisible.value
+}
+
+function closeTooltip() {
+    if (!isVisible.value) return
+    isVisible.value = false
+
+    // 접근성: 닫기 후 트리거 버튼으로 포커스 복귀
+    nextTick(() => {
+        triggerRef.value?.focus()
+    })
+}
+
+function handleClickOutside(event) {
+    if (
+        wrapperRef.value &&
+        !wrapperRef.value.contains(event.target)
+    ) {
+        closeTooltip()
+    }
+}
+
+function handleEsc(event) {
+    if (event.key === 'Escape') {
+        closeTooltip()
+    }
+}
+
+onMounted(() => {
+    document.addEventListener('click', handleClickOutside)
+    document.addEventListener('keydown', handleEsc)
+})
+
+onBeforeUnmount(() => {
+    document.removeEventListener('click', handleClickOutside)
+    document.removeEventListener('keydown', handleEsc)
+})
+</script>
+
+<style scoped>
+.tooltip-wrapper {
+    position: relative;
+    display: block;
+	height: 2.4rem;
+}
+
+.tooltip-trigger {
+    cursor: pointer;
+}
+
+/* 툴팁 위치 */
+.tooltip-content {
+    position: absolute;
+    background: #333;
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    z-index: 1000;
+    min-width: 180px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip-content.top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+}
+
+.tooltip-content.bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+}
+
+.tooltip-content.left {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 8px;
+}
+
+.tooltip-content.right {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 8px;
+}
+
+/* 닫기 버튼 */
+.tooltip-close {
+    background: transparent;
+    border: none;
+    color: #fff;
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* 내부 컨텐츠 */
+.tooltip-inner {
+    padding-right: 20px;
+}
+
+/* 애니메이션 */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+</style>

@@ -5,6 +5,8 @@ import UiView from '@/views/UiView.vue'
 import routerView from '@/views/routerView.vue'
 import buttonView from '@/views/ButtonView.vue'
 import formView from '@/views/FormView.vue'
+import AccordionView from '@/views/AccordionView.vue'
+import TooltipView from '@/views/TooltipView.vue'
 
 const routes = [
 	{
@@ -36,6 +38,16 @@ const routes = [
 		path: '/form',
 		name: 'form',
 		component: formView,
+	},
+	{
+		path: '/accordion',
+		name: 'accordion',
+		component: AccordionView,
+	},
+	{
+		path: '/tooltip',
+		name: 'tooltip',
+		component: TooltipView,
 	},
 ]
 

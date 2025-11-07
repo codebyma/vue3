@@ -144,6 +144,10 @@ watchEffect(() => {
 }
 
 /* 색상별 스타일 (SVG fill 적용) */
+.icon.white svg {
+	fill: var(--white);
+}
+
 .icon.gray900 svg {
 	fill: var(--gray900);
 }

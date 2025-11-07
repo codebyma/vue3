@@ -5,8 +5,10 @@
 			<router-link to="/modal">Modal</router-link> |
 			<router-link to="/ui">Ui</router-link> |
 			<router-link to="/router">router</router-link> |
-			<router-link to="/button">button</router-link> |
-			<router-link to="/form">form</router-link> |
+			<router-link to="/button">Button</router-link> |
+			<router-link to="/form">Form</router-link> |
+			<router-link to="/accordion">accordion</router-link> |
+			<router-link to="/tooltip">tooltip</router-link> |
 		</nav>
 	</header>
 </template>
@@ -17,6 +19,11 @@
 
 <style scoped>
 #header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
 	display: flex;
 	align-items: center;
 	justify-content: center;

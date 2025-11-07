@@ -41,7 +41,7 @@
 	--gutter64: 3.2rem;
 
 	/* container */
-	--container_gap: 2.4rem;
+	--container_gap: 1.6rem;
 
 	/* spacing 외부 여백 */
 	--spacing_0: 0;
@@ -52,7 +52,7 @@
 	--spacing_xl: 6.4rem;
 
 	/* gap 내부 여백 */
-	--gap_sx: 0.4rem;
+	--gap_xs: 0.4rem;
 	--gap_sm: 0.8rem;
 	--gap_md: 1.2rem;
 	--gap_lg: 1.6rem;
@@ -168,16 +168,6 @@ button {
 	font-size: var(--font-basic);
 	color: inherit;
 	cursor: pointer;
-}
-
-html,
-body,
-#app,
-#container,
-.sections {
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
 }
 
 html {
@@ -938,6 +928,21 @@ p {
 	margin-top: calc(var(--gutter32) * 2) !important;
 	padding-left: var(--gutter32) !important;
 	padding-right: var(--gutter32) !important;
+}
+
+
+html,
+body,
+#app,
+#container,
+.sections {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+#container {
+	padding-top: 10.4rem;
 }
 
 

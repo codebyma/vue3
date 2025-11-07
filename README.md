@@ -76,3 +76,18 @@ npx gh-pages -d dist
 
 ## 기존 gh-pages 브랜치의 내용을 완전히 덮어씌우기
 npx gh-pages -d dist --dotfiles --branch gh-pages --message "rebuild with correct base"
+
+
+
+
+
+# 현재 로컬 저장소가 연결된 원격 저장소(remote repository)의 주소를 확인
+git remote -v
+
+# 원격 저장소(origin)의 주소를 ak0513 SSH 설정으로 변경
+ak0513
+git remote set-url origin git@github.com-ak0513:ak0513/vue.git
+
+# 원격 저장소(origin)의 주소를 codebyma SSH 설정으로 변경 
+codebyma
+git remote set-url origin git@github.com-codebyma:codebyma/vue.git
