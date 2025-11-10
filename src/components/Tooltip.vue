@@ -29,7 +29,7 @@
                     type="button"
                     aria-label="툴팁 닫기"
                 >
-                    ✕
+                    <Icon iconName="btn_close.svg" iconColor="white" />
                 </button>
 
                 <div class="tooltip-inner">
@@ -42,6 +42,7 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import Icon from '@/components/Icon.vue'
 
 const props = defineProps({
     position: {
@@ -104,7 +105,10 @@ onBeforeUnmount(() => {
 }
 
 .tooltip-trigger {
-    cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	cursor: pointer;
 }
 
 /* 툴팁 위치 */
@@ -112,11 +116,11 @@ onBeforeUnmount(() => {
     position: absolute;
     background: #333;
     color: #fff;
-    border-radius: 6px;
-    padding: 10px 12px;
-    font-size: 14px;
+    border-radius: 0.4rem;
+    padding: 0.8rem 2.8rem 0.8rem 1.6rem;
+    font-size: 1.4rem;
     z-index: 1000;
-    min-width: 180px;
+    min-width: 20rem;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -150,21 +154,13 @@ onBeforeUnmount(() => {
 
 /* 닫기 버튼 */
 .tooltip-close {
-    background: transparent;
-    border: none;
-    color: #fff;
     position: absolute;
-    top: 4px;
-    right: 6px;
-    font-size: 16px;
+    top: 0.6rem;
+    right: 0.6rem;
+    background: transparent;
     cursor: pointer;
-    line-height: 1;
 }
 
-/* 내부 컨텐츠 */
-.tooltip-inner {
-    padding-right: 20px;
-}
 
 /* 애니메이션 */
 .fade-enter-active,

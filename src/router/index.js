@@ -7,6 +7,7 @@ import buttonView from '@/views/ButtonView.vue'
 import formView from '@/views/FormView.vue'
 import AccordionView from '@/views/AccordionView.vue'
 import TooltipView from '@/views/TooltipView.vue'
+import ChipsView from '@/views/ChipsView.vue'
 
 const routes = [
 	{
@@ -48,6 +49,11 @@ const routes = [
 		path: '/tooltip',
 		name: 'tooltip',
 		component: TooltipView,
+	},
+	{
+		path: '/chips',
+		name: 'chips',
+		component: ChipsView,
 	},
 ]
 

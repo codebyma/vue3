@@ -9,6 +9,7 @@
 			<router-link to="/form">Form</router-link> |
 			<router-link to="/accordion">accordion</router-link> |
 			<router-link to="/tooltip">tooltip</router-link> |
+			<router-link to="/chips">chips</router-link> |
 		</nav>
 	</header>
 </template>
