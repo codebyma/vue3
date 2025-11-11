@@ -1,10 +1,12 @@
 <template>
-	<DefaultLayout>
-		<div class="btn_wrap">
-			<button class="btn" @click="modal1.open($event)">모달 1 열기</button>
-			<button class="btn" @click="modal2.open($event)">모달 2 열기</button>
-		</div>
-	</DefaultLayout>
+	<SectionTitle title="모달 가이드" subTitle="모달에 대한 설명 노출"></SectionTitle>
+	<Section>
+		<h2 class="h_tit2">기본</h2>
+		<ButtonWrap spacing="lg" customClass="flex_center">
+			<Button label="모달1 열기" type="text" @click="modal1.open($event)" />
+			<Button label="모달2 열기" type="text" @click="modal2.open($event)" />
+		</ButtonWrap>
+	</Section>
 
 	<!-- Modal -->
 	<Modal ref="modal1" v-model="isModal1" ariaLabelledby="modal1" title="모달 1">

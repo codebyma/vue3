@@ -41,16 +41,18 @@ const open = async (event) => {
 	if (modalEl.value) {
 		modalEl.value.setAttribute('tabindex', '0');
 		modalEl.value.focus();
-		UI.a11y.accessDisable(document.querySelector('#wrap'), 'modal');
-		// UI.a11y.accessDisable(UI.dom.prevAll(modalEl.value), 'modal');
+		// UI.a11y.accessDisable(document.querySelector('#wrap'), 'modal');
+		UI.a11y.accessDisable(document.querySelector('#header'), 'modal');
+		UI.a11y.accessDisable(UI.dom.prevAll(modalEl.value), 'modal');
 	}
 };
 
 const close = async () => {
 	// 복원 로직을 DOM 제거 전에 미리 실행
 	if (modalEl.value) {
-		UI.a11y.accessEnable(document.querySelector('#wrap'), 'modal');
-		// UI.a11y.accessEnable(UI.dom.prevAll(modalEl.value), 'modal');
+		// UI.a11y.accessEnable(document.querySelector('#wrap'), 'modal');
+		UI.a11y.accessEnable(document.querySelector('#header'), 'modal');
+		UI.a11y.accessEnable(UI.dom.prevAll(modalEl.value), 'modal');
 	}
 
 	emit('update:modelValue', false);
@@ -91,7 +93,7 @@ defineExpose({ open, close });
 
 .modal .modal_dialog {
 	position: relative;
-	min-width: 64.0rem;
+	min-width: 90vw;
 	border: 1px solid var(--border-color);
 	background-color: #fff;
 	border-radius: 0.8rem;

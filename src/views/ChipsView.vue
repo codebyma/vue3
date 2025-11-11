@@ -1,13 +1,11 @@
 <template>
-	<DefaultLayout bg="gray">
-		<SectionTitle title="칩스 가이드" subTitle="칩스에 대한 설명 노출"></SectionTitle>
-		<Section>
-			<h2 class="h_tit2">기본</h2>
-			<Box>
-				<Chips :chips="items" />
-			</Box>
-		</Section>
-	</DefaultLayout>
+	<SectionTitle title="칩스 가이드" subTitle="칩스에 대한 설명 노출"></SectionTitle>
+	<Section>
+		<h2 class="h_tit2">기본</h2>
+		<Box>
+			<Chips :chips="items" />
+		</Box>
+	</Section>
 </template>
 
 <script setup>

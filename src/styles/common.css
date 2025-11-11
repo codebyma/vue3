@@ -930,11 +930,16 @@ p {
 	padding-right: var(--gutter32) !important;
 }
 
+html,
+body {
+	height: 100%;
+}
 
 html,
 body,
 #app,
 #container,
+#wrap,
 .sections {
 	display: flex;
 	flex-direction: column;

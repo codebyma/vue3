@@ -2,7 +2,7 @@
 	<div
 		ref="wrapperRef"
 		class="chips_wrapper"
-		:class="{ is_active: isExpanded }"
+		:class="{ is_active: isExpanded, has_toggle: showToggle }"
 	>
 		<!-- 버튼 리스트 -->
 		<div ref="scrollRef" class="chips_scroll">
@@ -29,16 +29,13 @@
 				:aria-expanded="isExpanded.toString()"
 				@click="toggleExpand"
 				:aria-label="isExpanded ? '접기' : '펼치기'"
-				
-			>
-				<!-- {{ isExpanded ? '접기' : '펼치기' }} -->
-			</Button>
+			/>
 		</div>
 	</div>
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick, watch } from 'vue'
+import { ref, onMounted, nextTick, watch, onBeforeUnmount } from 'vue'
 import Button from '@/components/Button.vue'
 
 const props = defineProps({
@@ -53,11 +50,18 @@ const wrapperRef = ref(null)
 const isExpanded = ref(false)
 const showToggle = ref(false)
 
+// 버튼이 스크롤 필요한지 체크
 const checkScrollable = () => {
 	const el = scrollRef.value
 	if (!el) return
-	// scrollWidth와 clientWidth 비교
-	showToggle.value = el.scrollWidth > el.clientWidth + 1 // 여백 오차 보정
+
+	const needToggle = el.scrollWidth > el.clientWidth + 1
+	showToggle.value = needToggle
+
+	// 현재 펼쳐져 있는데, 스크롤 필요 없으면 자동 최소화
+	if (!needToggle && isExpanded.value) {
+		isExpanded.value = false
+	}
 }
 
 const toggleExpand = () => {
@@ -67,9 +71,11 @@ const toggleExpand = () => {
 onMounted(async () => {
 	await nextTick()
 	checkScrollable()
-
-	// 리사이즈 시 다시 계산
 	window.addEventListener('resize', checkScrollable)
+})
+
+onBeforeUnmount(() => {
+	window.removeEventListener('resize', checkScrollable)
 })
 
 watch(
@@ -88,7 +94,6 @@ watch(
 	align-items: center;
 	overflow: hidden;
 	width: 100%;
-	
 }
 
 .chips_scroll {
@@ -97,7 +102,7 @@ watch(
 	overflow-x: auto;
 	scroll-behavior: smooth;
 	flex: 1;
-	padding-right:4.8rem;
+	padding-right: 4.8rem;
 }
 
 .chips_scroll .btn {
