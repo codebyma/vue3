@@ -25,6 +25,11 @@
 		<Box>
 			<Table :columns="columns" :rows="rows" variant="compact" />
 		</Box>
+		
+		<h2 class="h_tit2">Scroll형</h2>
+		<Box>
+			<Table :columns="columns" :rows="rows" variant="striped" />
+		</Box>
 	</Section>
 </template>
 

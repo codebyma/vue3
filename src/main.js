@@ -5,6 +5,7 @@ import router from './router'
 
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import Section from '@/layouts/Section.vue'
+import SectionDivider from '@/layouts/SectionDivider.vue'
 import SectionTitle from '@/components/SectionTitle.vue'
 
 import Button from '@/components/Button.vue'
@@ -16,6 +17,7 @@ app.use(router)
 
 app.component('DefaultLayout', DefaultLayout)
 app.component('Section', Section)
+app.component('SectionDivider', SectionDivider)
 app.component('SectionTitle', SectionTitle)
 
 app.component('Button', Button)

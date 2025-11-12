@@ -2,6 +2,7 @@
 	<header id="header">
 		<nav id="nav">
 			<router-link to="/">Home</router-link> |
+			<router-link to="/sample">Sample</router-link> |
 			<router-link to="/ui">Ui</router-link> |
 			<router-link to="/router">router</router-link> |
 			<router-link to="/forms/button">forms</router-link> |

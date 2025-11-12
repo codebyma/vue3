@@ -25,6 +25,7 @@
 	--font-basic: 1.6rem;
 
 	--line-height: 1.6;
+	--txt-line-height: 1.7;
 
 	/* gutter */
 	--gutter4: 0.2rem;
@@ -181,9 +182,8 @@ body {
 	font-size: var(--font-basic);
 }
 
-p {
-	margin-top: var(--spacing_xs);
-	color: var(--gray700);
+.txt_primary {
+	color:var(--primary);
 }
 
 /* 접근성 */
@@ -950,6 +950,12 @@ body,
 	padding-top: 10.4rem;
 }
 
+.body_txt {
+	margin-top: var(--spacing_xs);
+	color: var(--gray700);
+	line-height: var(--txt-line-height);
+}
+
 
 
 
@@ -958,27 +964,30 @@ body,
 [class*='h_tit'] {
 	position: relative;
 	color: var(--black);
-	font-weight: 700;
 }
 
 .h_tit1 {
-	margin-top: var(--spacing_xl);
-	font-size: 3.2rem;
+	margin-top: var(--spacing_lg);
+	font-size: 2.4rem;
+	font-weight: 500;
 }
 
 .h_tit2 {
-	margin-top: var(--spacing_lg);
-	font-size: 2.4rem;
+	margin-top: var(--spacing_md);
+	font-size: 2.0rem;
+	font-weight: 500;
 }
 
 .h_tit3 {
-	margin-top: var(--spacing_md);
-	font-size: 2.0rem;
+	margin-top: var(--spacing_sm);
+	font-size: 1.8rem;
+	font-weight: 500;
 }
 
 .h_tit4 {
 	margin-top: var(--spacing_sm);
 	font-size: 1.6rem;
+	font-weight: 500;
 }
 
 .h_tit1:first-child,

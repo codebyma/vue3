@@ -1,7 +1,7 @@
 <template>
-	<div class="section_tit">
-		<h1 class="h_tit1">{{ title }}</h1>
-		<p v-if="props.subTitle" class="h_tit1_sub">{{ subTitle }}</p>
+	<div class="page_header">
+		<h1 class="page_tit">{{ title }}</h1>
+		<p v-if="props.subTitle" class="page_subtit">{{ subTitle }}</p>
 	</div>
 </template>
 
@@ -13,9 +13,19 @@ const props = defineProps({
 </script>
 
 <style scoped>
-.section_tit {
+.page_header {
 	margin-top: 2.4rem;
 	padding: 0 var(--container_gap);
 	text-align: center;
+}
+
+.page_tit {
+	font-size: 3.2rem;
+	font-weight: 700;
+	color: var(--black);
+}
+
+.page_subtit {
+	color: var(--gray700);
 }
 </style>
