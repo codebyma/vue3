@@ -12,7 +12,21 @@ import ModalView from '@/views/ModalView.vue'
 import ChipsView from '@/views/ChipsView.vue'
 import TableView from '@/views/TableView.vue'
 import IconView from '@/views/IconView.vue'
-import NotFoundView from '../views/NotFoundView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
+
+import GsapView from '@/views/gsap/GsapView.vue'
+import BackgroundFade from '@/views/gsap/BackgroundFade.vue'
+import ScrollDemo from '@/views/gsap/ScrollDemo.vue'
+import HorizontalParallax from '@/views/gsap/HorizontalParallax.vue'
+import HorizontalScroll from '@/views/gsap/HorizontalScroll.vue'
+import ImageZoom from '@/views/gsap/ImageZoom.vue'
+import ObserverFade from '@/views/gsap/ObserverFade.vue'
+import Parallax from '@/views/gsap/Parallax.vue'
+import PinSection from '@/views/gsap/PinSection.vue'
+import ScrollReactive from '@/views/gsap/ScrollReactive.vue'
+import StretchText from '@/views/gsap/StretchText.vue'
+import SvgLine from '@/views/gsap/SvgLine.vue'
+import TextReveal from '@/views/gsap/TextReveal.vue'
 
 const routes = [
 	{
@@ -83,11 +97,80 @@ const routes = [
 		]
 	},
 	{
+		path: '/gsap/gsapView',
+		name: 'gsapView',
+		component: GsapView,
+		children: [
+			{
+				path: '/gsap/scrollDemo',
+				name: 'scrollDemo',
+				component: ScrollDemo,
+			},
+			{
+				path: '/gsap/backgroundFade',
+				name: 'backgroundFade',
+				component: BackgroundFade,
+			},
+			{
+				path: '/gsap/horizontalParallax',
+				name: 'horizontalParallax',
+				component: HorizontalParallax,
+			},
+			{
+				path: '/gsap/horizontalScroll',
+				name: 'horizontalScroll',
+				component: HorizontalScroll,
+			},
+			{
+				path: '/gsap/imageZoom',
+				name: 'imageZoom',
+				component: ImageZoom,
+			},
+			{
+				path: '/gsap/observerFade',
+				name: 'observerFade',
+				component: ObserverFade,
+			},
+			{
+				path: '/gsap/parallax',
+				name: 'parallax',
+				component: Parallax,
+			},
+			{
+				path: '/gsap/pinSection',
+				name: 'pinSection',
+				component: PinSection,
+			},
+			{
+				path: '/gsap/scrollReactive',
+				name: 'scrollReactive',
+				component: ScrollReactive,
+			},
+			{
+				path: '/gsap/stretchText',
+				name: 'stretchText',
+				component: StretchText,
+			},
+			{
+				path: '/gsap/svgLine',
+				name: 'svgLine',
+				component: SvgLine,
+			},
+			{
+				path: '/gsap/textReveal',
+				name: 'textReveal',
+				component: TextReveal,
+			},
+		]
+	},
+	{
 		path: '/:pathMatch(.*)*',
 		name: 'NotFound',
 		component: NotFoundView,
 	},
 ]
+
+
 
 const router = createRouter({
 	// history: createWebHashHistory(), // 해시 모드

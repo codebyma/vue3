@@ -76,11 +76,11 @@
 					<tbody>
 						<tr>
 							<td>A주식</td>
-							<td colspan="2">+5,000,000</td>
+							<td colspan="2" class="align_c">+5,000,000</td>
 						</tr>
 						<tr>
 							<td>B주식</td>
-							<td colspan="2">-1.000.000</td>
+							<td colspan="2" class="align_c">-1.000.000</td>
 						</tr>
 						<tr>
 							<td>과세 대상</td>
@@ -131,11 +131,11 @@
 					<tbody>
 						<tr>
 							<td>투자원금</td>
-							<td colspan="2">20,000,000</td>
+							<td colspan="2" class="align_c">20,000,000</td>
 						</tr>
 						<tr>
 							<td>20% 수익</td>
-							<td colspan="2">4,000,000</td>
+							<td colspan="2" class="align_c">4,000,000</td>
 						</tr>
 						<tr>
 							<td>매도 시 세금</td>
@@ -158,24 +158,58 @@
 			</div>
 
 			<h5 class="h_tit4">ETF와 세금</h5>
-			<div class="table_wrap">
+			<div class="table_wrap scroll">
 				<table>
+					<colgroup>
+						<col class="w20">
+						<col class="w30">
+						<col class="">
+					</colgroup>
 					<thead>
 						<tr>
 							<th>구분</th>
-							<th>국내 주식형 ETF</th>
-							<th>해외 주식형 ETF</th>
+							<th>매매차익</th>
+							<th>분배(배당)금</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td>매매차익</td>
-							<td>바과세</td>
-							<td>Min(과표기준가 증분, 매매차익) 15.4%</td>
+							<td>국내 ETF</td>
+							<td>비과세</td>
+							<td>15.4%<br><small>(배당소득세)</small></td>
 						</tr>
 						<tr>
-							<td>분배금</td>
-							<td colspan="2">15.4%</td>
+							<td>해외 ETF<br><small>(국내상장)</small></td>
+							<td>15.4%<br><small>(매매차익 과세)</small></td>
+							<td>15.4%<br><small>(배당소득세)</small></td>
+						</tr>
+						<tr>
+							<td>해외 ETF<br><small>(해외상장)</small></td>
+							<td>22%<br><small>(250만원 비과세/<br>양도소득세)</small></td>
+							<td>
+								<ul class="bullet_dot mgt0">
+									<li>미국: 15% 원천징수</li>
+									<li>국내: 원천징수 된 금액에서 추가로 15.4%</li>
+									<li>단, 외국납부세액공제로 인해 국내세금 - 미국세금 만 추가 납부</li>
+									<li>
+										예를 들어 배당금이 10만원이라면<br>
+										미국 원천징수: 1.5만원<br>
+										한국 분리과세: 1.54만원<br>
+										외국납부세액 공제: 1.54만원 - 1.5만원 = 0.04만원 추가 납부
+									</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td>연금저축</td>
+							<td colspan="2">
+								계좌내 발생한 수익은 비과세/<br>
+								55세 이후 연금 수령시<br>
+								3.3~5.5% 소득세</td>
+						</tr>
+						<tr>
+							<td>ISA</td>
+							<td colspan="2">손익통산 후 9.9% 분리과세<br><small>(200만원 비과세)</small></td>
 						</tr>
 					</tbody>
 				</table>
@@ -186,12 +220,14 @@
 				ISA계좌는 한도가 있기 때문에 우선순위를 따지면 해외 주식형 ETF를 투자하는 게 좋다.<br>
 				그럼에도 불구하고 국내 주식형 ETF를 담고 싶다면 고배당 ETF를 담아주면 된다.
 			</p>
+
+
+			
 		</Section>
 	</DefaultLayout>
 </template>
 
 <script setup>
-
 
 
 </script>
@@ -275,7 +311,8 @@ p.bullet_dot::before,
 .table_wrap table {
 	width: 100%;
 	border-collapse: collapse;
-	border-top: 1px solid var(--border-color);
+	border-top: 2px solid var(--gray400);
+	/* table-layout: fixed; */
 }
 
 caption {
@@ -293,12 +330,15 @@ caption {
 	padding: 1.2rem;
 	background-color: var(--light);
 	color: var(--black);
-	font-weight: 400;
+	font-weight: 500;
+	text-align: left;
 }
 
 .table_wrap table td {
-	padding:1.2rem;
-	color: var(--gray);
+	padding:0.8rem 0.8rem 0.8rem 0;
+	color: var(--gray700);
+	vertical-align: middle;
+	font-size: 1.4rem;
 }
 
 .table_wrap table thead th {
@@ -336,6 +376,12 @@ caption {
 .table_wrap.scroll {
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
+}
+
+.table_wrap small {
+	display: block;
+	font-size: 1.2rem;
+	color: var(--gray700)
 }
 
 

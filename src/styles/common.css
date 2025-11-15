@@ -20,7 +20,7 @@
 
 	--link-color: var(--gray900);
 
-	--border-color: var(--gray400);
+	--border-color: var(--gray300);
 
 	--font-basic: 1.6rem;
 
@@ -565,6 +565,10 @@ body {
 
 .none {
 	display: none !important;
+}
+
+.nowrap {
+	white-space: nowrap;
 }
 
 /* flex */

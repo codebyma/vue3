@@ -6,6 +6,7 @@
 			<router-link to="/ui">Ui</router-link> |
 			<router-link to="/router">router</router-link> |
 			<router-link to="/forms/button">forms</router-link> |
+			<router-link to="/gsap/gsapView">gsap</router-link> |
 		</nav>
 	</header>
 </template>
