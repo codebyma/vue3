@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
+import IntroView from '@/views/portfolio/IntroView.vue'
+
 import SampleView from '@/views/SampleView.vue'
 import UiView from '@/views/UiView.vue'
 import routerView from '@/views/routerView.vue'
@@ -33,6 +35,11 @@ const routes = [
 		path: '/',
 		name: 'home',
 		component: HomeView,
+	},
+	{
+		path: '/intro',
+		name: 'intro',
+		component: IntroView,
 	},
 	{
 		path: '/sample',
